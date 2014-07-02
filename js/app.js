@@ -6,8 +6,8 @@ function FrmController($scope, $http) {
 		).success(function(data, status, headers, config) {
 				//alert(data.uname); 
 				//alert(data.pswd);
-				//this.tweets = data;
-				frm.tweets = arts;
+				frm.tweets = data;
+				//frm.tweets = arts;
 				console.log(frm.tweets);
 		}).error(function(data, status) {
 		   alert(status);

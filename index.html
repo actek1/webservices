@@ -3,6 +3,7 @@
         <title>AngularJs Twitter Feeds</title>
 		<meta charset="utf-8"> 
         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/twitts.css" />
 		<script type="text/javascript" src="angular/angular.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
     </head>
@@ -42,12 +43,12 @@
 			</form>
 		</section>
 		<section class="container">
-			<fieldset>
-				<legend>Twitts</legend>
-				<div ng-show="tweet.show" ng-repeat="tweet in frm.tweets">
-					<p>{{tweet.name}}</p>
-					<p>{{tweet.body}}</p>
-					<p>{{tweet.createdOn | date}}</p>
+			<legend class="text-info">Twitts</legend>
+			<fieldset id="twitts_box">
+				<div class="well" ng-repeat="tweet in frm.tweets">
+					<p id="name"><ret ng-show="tweet.retweeted_status.user.name">{{tweet.retweeted_status.user.name}} --></ret> {{tweet.user.name}} </p>
+					<p id="text"> {{tweet.text}} </p>
+					<p id="date"> {{tweet.created_at}} </p>
 				</div>
 			</fieldset>
 		</section>

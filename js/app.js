@@ -2,13 +2,14 @@ function FrmController($scope, $http) {
 	this.tweets = {};
 
 	$scope.SignUp = function(frm) {
-		$http.post('server.php', {'uname': $scope.username, 'pswd': $scope.password}
+		$http.post('server.php', {'uname': $scope.username, 'pswd': $scope.password},
+		{headers: {'Accept': 'application/json;odata=verbose'}}
 		).success(function(data, status, headers, config) {
 				//alert(data.uname); 
 				//alert(data.pswd);
 				frm.tweets = data;
 				//frm.tweets = arts;
-				console.log(frm.tweets);
+				//console.log(frm.tweets);
 		}).error(function(data, status) {
 		   alert(status);
 		});

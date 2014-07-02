@@ -1,27 +1,24 @@
 <?php
-require_once("oauth/twitteroauth.php"); //Path to twitteroauth library
+require_once("oauth/twitteroauth.php");
 
-//Password y Username recibidos
+//Password y Username recibidos del formulario
 $data = json_decode(file_get_contents("php://input"));
 $usrname = mysql_real_escape_string($data->uname);
 $upswd = mysql_real_escape_string($data->pswd);
 
-//Procesamiento de Twitts
-$twitteruser = "FutApp";//Username
-$notweets = 5;//number of tweets to get
-$consumerkey = "LHkKJItKmJGj9EewF2543SQoY";
-$consumersecret = "cVImsvPmHZxrLte2JgCtUqx1JgNJApMvd4RzS99UgFVRB0V4C8";
-$accesstoken = "379872175-t4gLqlkgZ5wdP5d3A3AujfRwc8ZMU7Oq3yn9ptZ5";
-$accesstokensecret = "SR7GqQOoBJWVS6qmHMIU8iDCjwylgAHHvDVlHWIZ9leno";
+//cuenta y numero de Tweets
+$twitter_user = "CNN";
+$num_tweets = 9;
+//keys de Twitter
+$consumerkey = "rwpLfyqai1O7WUrctJuPWBH6s";
+$consumersecret = "eCPefJW6djpN920OqagYuelXcu9gg416DJTkCR8qZoLAHFKYHW";
+$accesstoken = "217753517-Yj3pbM1ToUByUBxAly79NAJyAXBzwAMa7vRbF8Of";
+$accesstokensecret = "Gi01QDL3Q44Kx551ZBpnESsxCGASZs8p0nzmB5JyCs0Qt";
  
-function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret) {
-  $connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
-  return $connection;
-}
-  
-$connection = getConnectionWithAccessToken($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
- 
-$tweets = $connection->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$twitteruser."&count=".$notweets);
- 
+//conexion a TwitterOAuth mandando como parametros los keys
+$conectar = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
+//enlace con la respuesta en JSON de twitter con los Twetts solicitados
+$tweets = $conectar->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$twitter_user."&count=".$num_tweets);
+//respuesta de regreso al angular en JSON
 print json_encode($tweets);
 ?>

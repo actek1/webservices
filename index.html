@@ -1,0 +1,55 @@
+<html ng-app>
+    <head>
+        <title>AngularJs Twitter Feeds</title>
+		<meta charset="utf-8"> 
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+		<script type="text/javascript" src="angular/angular.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+    </head>
+    <body ng-controller="FrmController as frm">
+        <section class="container">
+            <form class="form-horizontal">
+				<fieldset>
+					<!-- Form Name -->
+					<legend>Login</legend>
+
+					<!-- Text input-->
+					<div class="control-group">
+					  <label class="control-label">Usuario</label>
+					  <div class="controls">
+						<input type="text" ng-model="username" placeholder="Username" class="input-medium">
+						
+					  </div>
+					</div>
+
+					<!-- Password input-->
+					<div class="control-group">
+					  <label class="control-label">Contraseña</label>
+					  <div class="controls">
+						<input type="password" ng-model="password" placeholder="Password" class="input-medium">
+						
+					  </div>
+					</div>
+
+					<!-- Button -->
+					<div class="control-group">
+					  <label class="control-label" for=""></label>
+					  <div class="controls">
+						<button ng-click='SignUp(frm);' class="btn btn-success">Cargar Twitts</button>
+					  </div>
+					</div>
+				</fieldset>
+			</form>
+		</section>
+		<section class="container">
+			<fieldset>
+				<legend>Twitts</legend>
+				<div ng-show="tweet.show" ng-repeat="tweet in frm.tweets">
+					<p>{{tweet.name}}</p>
+					<p>{{tweet.body}}</p>
+					<p>{{tweet.createdOn | date}}</p>
+				</div>
+			</fieldset>
+		</section>
+    </body>
+</html>

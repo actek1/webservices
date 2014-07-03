@@ -20,5 +20,6 @@ $conectar = new TwitterOAuth($consumerkey, $consumersecret, $accesstoken, $acces
 //enlace con la respuesta en JSON de twitter con los Twetts solicitados
 $tweets = $conectar->get("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=".$twitter_user."&count=".$num_tweets);
 //respuesta de regreso al angular en JSON
+header('Content-type: application/json');
 print json_encode($tweets);
 ?>

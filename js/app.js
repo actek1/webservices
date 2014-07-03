@@ -3,7 +3,7 @@ function FrmController($scope, $http) {
 
 	$scope.SignUp = function(frm) {
 		$http.post('server.php', {'uname': $scope.username, 'pswd': $scope.password},
-		{headers: {'Accept': 'application/json;odata=verbose'}}
+		{headers: {'Accept': 'application/json'}}
 		).success(function(data, status, headers, config) {
 				//alert(data.uname); 
 				//alert(data.pswd);
